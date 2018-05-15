@@ -58,11 +58,19 @@ public class JsonToExcel {
             JSONObject method = (JSONObject) api.get("post");
             if(method == null){
             	method = (JSONObject) api.get("get");
-            	
-            	if(method == null){
-            		method = (JSONObject) api.get("delete");
-            	}
             }
+            
+            if(method == null){
+        		method = (JSONObject) api.get("delete");
+        	}
+            
+            if(method == null){
+        		method = (JSONObject) api.get("put");
+        	}
+            
+            if(method == null){
+        		method = (JSONObject) api.get("patch");
+        	}
             
             String controller = ((JSONArray)method.get("tags")).toString();
             String description = (String) method.get("summary");
